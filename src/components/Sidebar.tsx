@@ -35,15 +35,16 @@ const menuItems = [
     icon: AlertTriangle,
   },
   {
-    title: "Error Codes",
-    url: "/error-codes",
-    icon: Code,
-  },
-  {
     title: "AI Copilot",
     url: "/ai-assistant",
     icon: Brain,
   },
+  {
+    title: "Error Codes",
+    url: "/error-codes",
+    icon: Code,
+  },
+  
 ];
 
 export function AppSidebar() {
