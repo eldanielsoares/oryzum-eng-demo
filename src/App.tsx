@@ -10,6 +10,7 @@ import Appointments from "./pages/Appointments";
 import ErrorCodes from "./pages/ErrorCodes";
 import AIAssistant from "./pages/AIAssistant";
 import NotFound from "./pages/NotFound";
+import Alerts from "./pages/Alerts";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/monitoring" element={<Monitoring />} />
+          <Route path="/alerts" element={<Alerts />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/error-codes" element={<ErrorCodes />} />
           <Route path="/ai-assistant" element={<AIAssistant />} />
