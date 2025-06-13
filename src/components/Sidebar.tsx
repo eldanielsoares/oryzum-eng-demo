@@ -39,11 +39,6 @@ const menuItems = [
     url: "/ai-assistant",
     icon: Brain,
   },
-  {
-    title: "Error Codes",
-    url: "/error-codes",
-    icon: Code,
-  },
   
 ];
 

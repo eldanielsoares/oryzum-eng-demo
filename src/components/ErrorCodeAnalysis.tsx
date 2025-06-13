@@ -43,7 +43,7 @@ export function ErrorCodeAnalysis() {
     return (time * rate) + operation + 1500; // Additional damage costs
   };
 
-  if (selectedError) {
+  if (!selectedError) {
     return (
       <div className="space-y-6">
         <div className="flex items-center gap-4">

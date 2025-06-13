@@ -11,6 +11,7 @@ import {
   Power,
   AlertTriangle
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface MetricCardProps {
   icon: React.ReactNode;
@@ -112,6 +113,7 @@ export function MonitoringMetrics() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+        <Link to={'/error-codes'}>
           <div className="flex items-center justify-between p-4 border rounded-lg">
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="text-orange-600 border-orange-200">P0301</Badge>
@@ -121,6 +123,7 @@ export function MonitoringMetrics() {
               </div>
             </div>
           </div>
+        </Link>
           
           <div className="flex items-center justify-between p-4 border rounded-lg">
             <div className="flex items-center gap-3">
