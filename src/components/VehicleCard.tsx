@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Car, Battery, Thermometer, AlertTriangle, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface VehicleCardProps {
   id: string;
@@ -97,14 +98,18 @@ export function VehicleCard({
           </div>
           
           <div className="flex gap-2">
+            <Link to='/alerts'>
             <Button variant="outline" size="sm">
               <AlertTriangle className="w-4 h-4 mr-1" />
               Alert
             </Button>
+            </Link>
+            <Link to='/appointments'>
             <Button variant="outline" size="sm">
               <Calendar className="w-4 h-4 mr-1" />
               Schedule
             </Button>
+            </Link>
           </div>
         </div>
       </CardContent>

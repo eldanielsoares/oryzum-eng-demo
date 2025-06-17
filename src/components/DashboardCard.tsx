@@ -8,6 +8,8 @@ interface DashboardCardProps {
   value: string | number;
   icon: LucideIcon;
   color: 'blue' | 'green' | 'orange' | 'red';
+  onClick: () => void;
+  isSelected?: boolean;
 }
 
 const colorClasses = {
@@ -24,9 +26,9 @@ const iconColors = {
   red: 'text-red-500',
 };
 
-export function DashboardCard({ title, value, icon: Icon, color }: DashboardCardProps) {
+export function DashboardCard({ title, value, icon: Icon, color, onClick, isSelected }: DashboardCardProps) {
   return (
-    <Card className={`${colorClasses[color]} border-2`}>
+    <Card className={`${colorClasses[color]} border-2 cursor-pointer ${isSelected && 'scale-105'}`} onClick={onClick}>
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div>

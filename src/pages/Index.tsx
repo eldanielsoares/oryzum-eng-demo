@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/Sidebar';
 import { DashboardCard } from '@/components/DashboardCard';
@@ -68,6 +68,23 @@ const Index = () => {
     }
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"operational" | "alert" | "stopped" | "">("");
+
+  const filteredVehicles = vehicles.filter((v) => {
+    const search = searchTerm.toLowerCase();
+    const matchesSearch =
+      v.sensor.toLowerCase().includes(search) ||
+      v.model.toLowerCase().includes(search) ||
+      v.driver.toLowerCase().includes(search);
+
+    const matchesStatus = statusFilter === "" || v.status === statusFilter;
+
+    return matchesSearch && matchesStatus;
+  });
+
+
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
@@ -92,24 +109,31 @@ const Index = () => {
                 value={4}
                 icon={Car}
                 color="blue"
+                onClick={() => setStatusFilter("")}
               />
               <DashboardCard
                 title="Operational"
                 value={2}
                 icon={Zap}
                 color="green"
+                onClick={() => setStatusFilter("operational")}
+                isSelected={statusFilter === 'operational'}
               />
               <DashboardCard
                 title="Alerts"
                 value={1}
                 icon={AlertTriangle}
                 color="orange"
+                onClick={() => setStatusFilter("alert")}
+                isSelected={statusFilter === 'alert'}
               />
               <DashboardCard
                 title="Stopped"
                 value={1}
                 icon={Square}
                 color="red"
+                onClick={() => setStatusFilter("stopped")}
+                isSelected={statusFilter === 'stopped'}
               />
             </div>
             
@@ -118,11 +142,13 @@ const Index = () => {
               <Input 
                 placeholder="Search by license plate, driver, car or sensor..." 
                 className="pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {vehicles.map((vehicle) => (
+              {filteredVehicles.map((vehicle) => (
                 <VehicleCard key={vehicle.id} {...vehicle} />
               ))}
             </div>
